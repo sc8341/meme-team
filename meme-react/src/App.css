@@ -13,15 +13,16 @@ img {
 
 button{
   padding:10px 15px;
-  border:2px solid #FFFFFF;
+  border:2px solid darkolivegreen;
   border-radius:0.12em;
   box-sizing: border-box;
   text-decoration:none;
   font-family:'Roboto',sans-serif;
   font-weight:bold;
-  color:black;
+  color: #FFFFFF;
   transition: all 0.2s;
   background-color: #11371C;
 }
-button:hover{color:#FFFFFF;}
+button:hover{color:darkolivegreen;
+border-color: #FFFFFF;}
 button:active{border-color:black;}
