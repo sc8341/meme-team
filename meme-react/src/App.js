@@ -43,7 +43,7 @@ function App() {
         {(memes.length===0) ? (
           <img src='http://spittoon.co.uk/wp-content/uploads/2019/01/error-meme.jpg' alt='error meme'/>
         ):(
-          <img src={memes[memeIndex].url} />
+          <img src={memes[memeIndex].url} alt='random empty meme' />
         )}
       </div>
     </>
