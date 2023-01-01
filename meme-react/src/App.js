@@ -1,11 +1,13 @@
 import './App.css';
 import React, { useState, useEffect } from 'react'
 
+
 function App() {
   const [components, setComponents] = useState([])
   const [data, setData] = useState([{}])
   const [memes, setMemes] = useState([{}])
-  const [memeIndex, setMemeIndex] = useState(0);
+  const [memeIndex, setMemeIndex] = useState(0)
+  const [captions, setCaptions] = useState([])
 
   const shuffleMemes = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -26,6 +28,38 @@ function App() {
         <h1>{props.text}</h1>
       </div>
     )
+  }
+
+  const updateCaption = (event, index) => {
+    const text = event.target.value || ''
+    setCaptions(
+      captions.map((c,i) => {
+        if(index === i){
+          return text;
+        }
+        else{
+          return c;
+        }
+      })
+    )
+  }
+
+  const createMeme = () => {
+    const currMeme = memes[memeIndex]
+    const formData = new FormData()
+    formData.append('username', 'sc8341')
+    formData.append('password', '0293iouSc@')
+    formData.append('template_id', currMeme.id);
+    captions.forEach((c, index) => formData.append(`boxes[${index}][text]`,c))
+
+    fetch('https://api.imgflip.com/caption_image', {
+      method: 'POST',
+      body: formData
+    }).then(res => {
+      res.json().then(res => {
+        console.log(res)
+      })
+    });
   }
 
   useEffect(() => {
@@ -49,6 +83,16 @@ function App() {
     )
   }, [])
 
+  useEffect(() => {
+    if(memes.length){
+      setCaptions(Array(memes[memeIndex].box_count).fill(''));
+    }
+  }, [memeIndex, memes])
+
+  useEffect(() => {
+    console.log(captions)
+  }, [captions])
+
   return (
     <>
       <div>
@@ -67,9 +111,14 @@ function App() {
         ):(
           <img src={memes[memeIndex].url} alt='random empty meme' />
         )}
+        {
+          captions.map((c, index) => (
+            <input onChange={(event) => updateCaption(event, index)} key={index} />
+          ))
+        }
       </div>
       <div>
-        <button onClick={displayResult}>Create Meme</button>
+        <button onClick={createMeme}>Create Meme</button>
         {components.map((item, i) => (<HeaderComponent text={item} />))}
       </div>
     </>
