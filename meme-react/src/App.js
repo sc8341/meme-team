@@ -125,7 +125,7 @@ function App() {
         }
       </div>
       <div>
-        <button onClick={createMeme}>Create Meme</button>
+        <button onClick={createMeme} id='createMemeBtn'>Create Meme</button>
         {components.map((item, i) => (<HeaderComponent text={item} />))}
       </div>
 

@@ -31,3 +31,7 @@ button:active{border-color:black;}
 input{
   margin-bottom: 20px;
 }
+
+#createMemeBtn{
+  margin-bottom: 50px;
+}
