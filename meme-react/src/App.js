@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react'
 
 function App() {
-
+  const [components, setComponents] = useState([])
   const [data, setData] = useState([{}])
   const [memes, setMemes] = useState([{}])
   const [memeIndex, setMemeIndex] = useState(0);
@@ -15,6 +15,18 @@ function App() {
       array[j] = temp;
     }
   };
+
+  const displayResult = () => {
+    setComponents([...components, 'Creating Custom Meme...'])
+  }
+
+  const HeaderComponent = (props) => {
+    return(
+      <div>
+        <h1>{props.text}</h1>
+      </div>
+    )
+  }
 
   useEffect(() => {
     fetch("/test").then(
@@ -55,6 +67,10 @@ function App() {
         ):(
           <img src={memes[memeIndex].url} alt='random empty meme' />
         )}
+      </div>
+      <div>
+        <button onClick={displayResult}>Create Meme</button>
+        {components.map((item, i) => (<HeaderComponent text={item} />))}
       </div>
     </>
   );
