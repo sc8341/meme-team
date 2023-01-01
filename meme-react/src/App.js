@@ -1,5 +1,8 @@
 import './App.css';
 import React, { useState, useEffect } from 'react'
+import Header from './components/Header/Header';
+import Nav from './components/Nav/Nav'
+import Footer from './components/Footer/Footer'
 
 
 function App() {
@@ -95,6 +98,10 @@ function App() {
 
   return (
     <>
+      <Nav/>
+      <Header/>
+      
+
       <div>
         {(typeof data.test === 'undefined') ? (
           <p>Loading...</p>
@@ -121,6 +128,8 @@ function App() {
         <button onClick={createMeme}>Create Meme</button>
         {components.map((item, i) => (<HeaderComponent text={item} />))}
       </div>
+
+      <Footer/>
     </>
   );
 }
