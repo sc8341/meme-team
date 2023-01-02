@@ -1,0 +1,20 @@
+.sticky {
+    
+    /* ========== MAKES NAV BAR 'STICKY' ========== */
+    position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+    left: 0;
+    z-index: 1100;
+
+    /* ========== STYLING NAV BAR ========== */
+    display: block;
+    background: #11371C;
+    background-size: contain;
+    padding: 1rem;
+}
+
+.sticky a {
+    padding: 1.1rem;
+    color: white;
+}

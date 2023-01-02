@@ -1,3 +1,12 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* gets rid of the scroll bar */
+/* ::-webkit-scrollbar {
+  display: none;
+} */
+
 body{
   background-color: rgb(47,79,79);
   text-align: center;
