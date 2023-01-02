@@ -111,7 +111,7 @@ function App() {
           ))
         )}
       </div>
-      <div>
+      <div id='create'>
         <button onClick={() => setMemeIndex(memeIndex+1)}>Generate</button>
         {(memes.length===0) ? (
           <img src='http://spittoon.co.uk/wp-content/uploads/2019/01/error-meme.jpg' alt='error meme'/>
