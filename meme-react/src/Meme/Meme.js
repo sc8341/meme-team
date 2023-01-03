@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import {useNavigate} from 'react-router-dom'
 
-function App() {
+function Meme() {
   const [components, setComponents] = useState([])
   const [data, setData] = useState([{}])
   const [memes, setMemes] = useState([{}])
   const [memeIndex, setMemeIndex] = useState(0)
   const [captions, setCaptions] = useState([])
+
+  const navigate = useNavigate();
 
   const shuffleMemes = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -41,7 +44,7 @@ function App() {
       })
     )
   }
-
+  
   const createMeme = () => {
     const currMeme = memes[memeIndex]
     const formData = new FormData()
@@ -56,6 +59,7 @@ function App() {
     }).then(res => {
       res.json().then(res => {
         console.log(res)
+        navigate(`/generated?url=${res.data.url}`)
       })
     });
   }
@@ -103,7 +107,7 @@ function App() {
         )}
       </div>
       <div id='create'>
-        <button onClick={() => setMemeIndex(memeIndex+1)}>Generate</button>
+        <button onClick={() => setMemeIndex(memeIndex+1)}>Generate Random</button>
         {(memes.length===0) ? (
           <img src='http://spittoon.co.uk/wp-content/uploads/2019/01/error-meme.jpg' alt='error meme'/>
         ):(
@@ -116,11 +120,11 @@ function App() {
         }
       </div>
       <div>
-        <button onClick={createMeme} id='createMemeBtn'>Create Meme</button>
+        <button onClick={createMeme} id='createMemeBtn'>Create Custom Meme</button>
         {components.map((item, i) => (<HeaderComponent text={item} />))}
       </div>
     </>
   );
 }
 
-export default App;
+export default Meme;
