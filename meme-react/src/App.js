@@ -50,8 +50,8 @@ function App() {
   const createMeme = () => {
     const currMeme = memes[memeIndex]
     const formData = new FormData()
-    formData.append('username', 'sc8341')
-    formData.append('password', '0293iouSc@')
+    formData.append('username', 'memeteam_serenabrian')
+    formData.append('password', 'memeteam123')
     formData.append('template_id', currMeme.id);
     captions.forEach((c, index) => formData.append(`boxes[${index}][text]`,c))
 
@@ -100,7 +100,7 @@ function App() {
     <>
       <Nav/>
       <Header/>
-      
+
       <div>
         {(typeof data.test === 'undefined') ? (
           <p>Loading...</p>
