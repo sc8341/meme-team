@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import {useNavigate} from 'react-router-dom'
 
 function Meme() {
-  const [components, setComponents] = useState([])
-  const [data, setData] = useState([{}])
+  //const [components, setComponents] = useState([])
+  //const [data, setData] = useState([{}])
   const [memes, setMemes] = useState([{}])
   const [memeIndex, setMemeIndex] = useState(0)
   const [captions, setCaptions] = useState([])
@@ -19,7 +19,7 @@ function Meme() {
     }
   };
 
-  const displayResult = () => {
+  /*const displayResult = () => {
     setComponents([...components, 'Creating Custom Meme...'])
   }
 
@@ -29,7 +29,7 @@ function Meme() {
         <h1>{props.text}</h1>
       </div>
     )
-  }
+  }*/
 
   const updateCaption = (event, index) => {
     const text = event.target.value || ''
@@ -64,7 +64,7 @@ function Meme() {
     });
   }
 
-  useEffect(() => {
+  /*useEffect(() => {
     fetch("/test").then(
       res => res.json()
     ).then(
@@ -73,7 +73,7 @@ function Meme() {
         console.log(data)
       }
     )
-  }, [])
+  }, [])*/
 
   useEffect(() => {
     fetch('https://api.imgflip.com/get_memes').then(
@@ -97,6 +97,7 @@ function Meme() {
 
   return (
     <>
+    {/**
       <div>
         {(typeof data.test === 'undefined') ? (
           <p>Loading...</p>
@@ -106,6 +107,7 @@ function Meme() {
           ))
         )}
       </div>
+      */}
       <div id='create'>
         <button onClick={() => setMemeIndex(memeIndex+1)}>Generate Random</button>
         {(memes.length===0) ? (
@@ -121,7 +123,7 @@ function Meme() {
       </div>
       <div>
         <button onClick={createMeme} id='createMemeBtn'>Create Custom Meme</button>
-        {components.map((item, i) => (<HeaderComponent text={item} />))}
+        {/*components.map((item, i) => (<HeaderComponent text={item} />))*/}
       </div>
     </>
   );
